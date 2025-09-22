@@ -1,0 +1,422 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2d4a2b;
+    background: linear-gradient(to bottom, #cce7cc 0%, #eaf6ea 100%);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a7c59;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.butterfly-icon {
+    font-size: 28px;
+    animation: flutter 2s ease-in-out infinite;
+}
+
+@keyframes flutter {
+    0%,100% {transform: rotate(0deg);}
+    25% {transform: rotate(-5deg);}
+    75% {transform: rotate(5deg);}
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4a7c59;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, #ff6b6b, #feca57);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #ff6b6b;
+}
+
+/* Home Section */
+.home-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* background: linear-gradient(to bottom, #a0e0a0 0%, #d4f0d4 100%); */
+    background: url(garden.jpg) no-repeat center center/cover;
+}
+
+.home-content {
+    text-align: center;
+    z-index: 2;
+    color: #2d4a2b;
+    padding: 0 20px;
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.main-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Real Flowers */
+.home-background .flower {
+    position: absolute;
+    width: 120px;
+    height: auto;   /* keeps natural ratio */
+    pointer-events: none;
+    animation: floatFlower linear infinite;
+    bottom: 30px;
+    z-index: 2;
+}
+
+.flower-1 { left: 10%; bottom: 40px; animation-duration: 12s; filter: blur(1px); }
+.flower-2 { left: 30%; bottom: 50px; animation-duration: 14s; }
+.flower-3 { left: 60%; bottom: 60px; animation-duration: 16s; filter: blur(2px); }
+.flower-4 { left: 80%; bottom: 45px; animation-duration: 13s; }
+
+@keyframes floatFlower {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+
+/* Real Butterflies */
+.butterflies-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.butterfly {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Butterfly Animations */
+.butterfly-1 { top: 20%; left: 10%; animation: fly1 20s linear infinite; }
+.butterfly-2 { top: 50%; left: 70%; animation: fly2 22s linear infinite; }
+.butterfly-3 { top: 30%; left: 50%; animation: fly3 18s linear infinite; }
+.butterfly-4 { top: 70%; left: 20%; animation: fly4 25s linear infinite; }
+.butterfly-5 { top: 40%; left: 80%; animation: fly5 19s linear infinite; }
+.butterfly-6 { top: 60%; left: 40%; animation: fly6 21s linear infinite; }
+
+@keyframes fly1 {
+    0%{transform: translate(0,0) rotate(0deg);}
+    25%{transform: translate(200px, 100px) rotate(15deg);}
+    50%{transform: translate(400px, -50px) rotate(-15deg);}
+    75%{transform: translate(200px, 50px) rotate(10deg);}
+    100%{transform: translate(0,0);}
+}
+@keyframes fly2 {
+    0%{transform: translate(0,0);}
+    25%{transform: translate(-250px, 80px);}
+    50%{transform: translate(-500px, -100px);}
+    75%{transform: translate(-250px, 50px);}
+    100%{transform: translate(0,0);}
+}
+@keyframes fly3 { 0%{transform: translate(0,0);} 25%{transform: translate(150px,-80px);} 50%{transform: translate(-200px,120px);} 75%{transform: translate(100px,-40px);} 100%{transform: translate(0,0);} }
+@keyframes fly4 { 0%{transform: translate(0,0);} 25%{transform: translate(400px,-120px);} 50%{transform: translate(800px,60px);} 75%{transform: translate(200px,-80px);} 100%{transform: translate(0,0);} }
+@keyframes fly5 { 0%{transform: translate(0,0);} 25%{transform: translate(-250px,100px);} 50%{transform: translate(-500px,-150px);} 100%{transform: translate(0,0);} }
+@keyframes fly6 { 0%{transform: translate(0,0);} 25%{transform: translate(300px,80px);} 50%{transform: translate(100px,-120px);} 75%{transform: translate(-200px,150px);} 100%{transform: translate(0,0);} }
+
+.butterfly:hover {
+    transform: scale(1.5);
+    animation-play-state: paused;
+}
+
+/* Butterfly Types Section */
+.butterfly-types-section {
+    padding: 100px 0;
+    background: #f0f9f0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 20px;
+    color: #2d4a2b;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 60px;
+    color: #4a7c59;
+}
+
+.butterfly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+}
+
+.butterfly-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.butterfly-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.butterfly-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.butterfly-info {
+    padding: 20px;
+}
+
+.butterfly-info h3 {
+    margin-bottom: 10px;
+    color: #2d4a2b;
+}
+
+.butterfly-info p {
+    color: #4a7c59;
+    font-size: 0.95rem;
+}
+
+/* Garden Facts Section */
+.garden-facts-section {
+    padding: 100px 0;
+    background: linear-gradient(to right, #d4f0d4, #a0e0a0);
+}
+
+.facts-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.fact-card {
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.fact-card:hover {
+    transform: translateY(-10px);
+}
+
+.fact-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 100px 0;
+    background: #f0f9f0;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-item h3 {
+    margin-bottom: 10px;
+    color: #2d4a2b;
+}
+
+.info-item p {
+    color: #4a7c59;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.contact-form input, 
+.contact-form textarea, 
+.contact-form select {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: #4a7c59;
+}
+
+.submit-button {
+    padding: 15px 30px;
+    border: none;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+.footer {
+    background: #4a7c59;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width:768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .contact-content {
+        flex-direction: column;
+    }
+
+    .home-background .flower {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Garden Flowers at Bottom */
+.home-section::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 100%;
+    height: 250px; /* change height if needed */
+    background: url("tt2-removebg-previepng") repeat-x;
+    background-size: 300px auto; /* adjust bush size */
+    z-index: 1;
+    margin-top: 30px;
+}
